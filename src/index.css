@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-black text-gold-100;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold-600 rounded-md;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-600;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105;
+}
+
+/* Button animations */
+.btn-primary {
+  @apply bg-primary-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-primary-700 hover:shadow-lg active:scale-95;
+}
+
+.btn-secondary {
+  @apply bg-white text-primary-600 border border-primary-600 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-primary-50 hover:shadow-lg active:scale-95;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply inline-block w-6 h-6 border-2 border-primary-200 border-t-primary-600 rounded-full animate-spin;
+}
+
+/* Hero section gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+}
+
+/* Glass effect */
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}

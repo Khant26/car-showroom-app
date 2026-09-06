@@ -10,7 +10,6 @@ const CarCard = ({ car, showRentalPrice = false }) => {
     _id,
     name,
     brand,
-    model,
     year,
     price,
     rentalPrice,

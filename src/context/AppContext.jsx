@@ -335,11 +335,13 @@ export const AppProvider = ({ children }) => {
     fetchBanners();
     fetchBrands();
     fetchFeaturedCars();
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- initial catalog load runs once
   }, []);
 
   // Fetch cars when filters or pagination change
   useEffect(() => {
     fetchCars();
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- state fields trigger this request
   }, [state.filters, state.pagination.cars.page]);
 
   const value = {

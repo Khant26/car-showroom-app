@@ -22,7 +22,7 @@ const Home = () => {
 
       return () => clearInterval(interval);
     }
-  }, [banners.length]);;
+  }, [banners.length]);
 
   const features = [
     {

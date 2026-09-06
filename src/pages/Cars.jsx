@@ -15,7 +15,6 @@ const Cars = () => {
     updateFilters,
     resetFilters,
     updatePagination,
-    fetchCars
   } = useApp();
 
   const { translate } = useLanguage();
@@ -48,6 +47,7 @@ const Cars = () => {
   // Update page title when URL changes or brands load
   useEffect(() => {
     setPageTitle(getPageTitle());
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- listed inputs determine the title
   }, [filters, brands, translate]);
 
   // Also update title when component mounts or URL changes
@@ -65,6 +65,7 @@ const Cars = () => {
     return () => {
       window.removeEventListener('popstate', handleLocationChange);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- listener refreshes when brand data changes
   }, [brands]);
 
   // Categories and other filter options
@@ -99,6 +100,7 @@ const Cars = () => {
     if (Object.keys(newFilters).length > 0) {
       updateFilters(newFilters);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- URL filters are applied once on mount
   }, []);
 
   const handleFilterChange = (key, value) => {
@@ -393,7 +395,7 @@ const Cars = () => {
                   No cars found matching your criteria
                 </div>
                 <p className="text-gold-300/70 mb-6 max-w-md mx-auto">
-                  We couldn't find any vehicles that match your search filters. Try adjusting your criteria or clear the filters.
+                  We couldn’t find any vehicles that match your search filters. Try adjusting your criteria or clear the filters.
                 </p>
                 <button
                   onClick={clearFilters}

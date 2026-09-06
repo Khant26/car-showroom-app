@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import RentalCard from '../components/RentalCard';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { FaCar, FaCalendarAlt, FaDollarSign, FaShieldAlt } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
 
 const Rental = () => {
@@ -18,6 +17,7 @@ const Rental = () => {
     };
     
     loadRentalCars();
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- initial rental load runs once
   }, []);
 
   const handlePageChange = (page) => {
@@ -45,28 +45,6 @@ const Rental = () => {
     return pages;
   };
 
-  const rentalFeatures = [
-    {
-      icon: FaCar,
-      title: translate('rental.features.selection.title'),
-      description: translate('rental.features.selection.desc')
-    },
-    {
-      icon: FaCalendarAlt,
-      title: translate('rental.features.duration.title'),
-      description: translate('rental.features.duration.desc')
-    },
-    {
-      icon: FaDollarSign,
-      title: translate('rental.features.rates.title'),
-      description: translate('rental.features.rates.desc')
-    },
-    {
-      icon: FaShieldAlt,
-      title: translate('rental.features.insurance.title'),
-      description: translate('rental.features.insurance.desc')
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-black">

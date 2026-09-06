@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { carAPI, formatPrice, formatDate, handleApiError } from '../services/api';
+import { carAPI, handleApiError } from '../services/api';
 import { useLanguage } from '../context/LanguageContext';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { 
@@ -51,6 +51,7 @@ const CarDetail = () => {
 
   useEffect(() => {
     fetchCarDetails();
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- reload only when the route id changes
   }, [id]);
 
   const fetchCarDetails = async () => {
@@ -79,13 +80,6 @@ const CarDetail = () => {
   };
 
   // Zoom functions
-  const zoomIn = () => {
-    setZoomLevel(prev => Math.min(prev + 0.5, 3));
-  };
-
-  const zoomOut = () => {
-    setZoomLevel(prev => Math.max(prev - 0.5, 0.5));
-  };
 
   const resetZoom = () => {
     setZoomLevel(1);
@@ -93,7 +87,7 @@ const CarDetail = () => {
   };
 
   // Handle double click to toggle zoom
-  const handleDoubleClick = (e) => {
+  const handleDoubleClick = () => {
     if (zoomLevel > 1) {
       // If already zoomed in, reset zoom
       resetZoom();
@@ -189,7 +183,7 @@ const CarDetail = () => {
       <div className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-center bg-black bg-opacity-70 p-10 rounded-lg border border-red-900/30 shadow-lg max-w-md">
           <h2 className="text-2xl font-bold text-gold-400 mb-4">Car Not Found</h2>
-          <p className="text-gold-300 mb-6">Sorry, we couldn't find the car you're looking for.</p>
+          <p className="text-gold-300 mb-6">Sorry, we couldn’t find the car you’re looking for.</p>
           <Link
             to="/cars"
             className="bg-gradient-to-r from-red-700 to-red-600 text-gold-200 px-6 py-3 rounded-lg hover:from-red-800 hover:to-red-700 transition-all duration-300 shadow-md hover:shadow-red-900/50 inline-flex items-center"
@@ -218,7 +212,7 @@ const CarDetail = () => {
 
       {/* Car Title - Premium Styling */}
       <div className="bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 py-8 shadow-md relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/assets/patterns/pattern-gold.png')] opacity-10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.35)_1px,transparent_1px)] bg-[length:18px_18px] opacity-20"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-block px-4 py-1 bg-black text-gold-400 text-sm font-medium rounded-full mb-3">
             {car.brand} • {car.category}

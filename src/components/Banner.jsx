@@ -11,7 +11,6 @@ const Banner = ({ banner }) => {
     buttonText,
     buttonLink,
     backgroundColor,
-    textColor
   } = banner;
 
   return (

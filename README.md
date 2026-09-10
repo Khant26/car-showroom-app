@@ -1,4 +1,4 @@
-# Car Showroom Frontend
+# Car Showroom
 
 A responsive customer-facing vehicle showroom for browsing cars, viewing detailed specifications, exploring rental options, and contacting the business. The interface supports multiple languages and light/dark themes.
 

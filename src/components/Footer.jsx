@@ -143,7 +143,7 @@ const Footer = () => {
               <Link to="/terms" className="text-gray-400 hover:text-primary-400 transition-colors duration-200 hover:underline">
                 {translate('footer.termsOfService')}
               </Link>
-              <Link to="/support" className="text-gray-400 hover:text-primary-400 transition-colors duration-200 hover:underline">
+              <Link to="/contact" className="text-gray-400 hover:text-primary-400 transition-colors duration-200 hover:underline">
                 {translate('footer.support')}
               </Link>
             </div>

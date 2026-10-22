@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { formatPrice } from '../services/api';
 import { FaGasPump, FaCogs, FaUsers, FaCalendarAlt, FaArrowRight } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
+import { API_ORIGIN } from '../config/api';
 
 const CarCard = ({ car, showRentalPrice = false }) => {
   const { translate } = useLanguage();
@@ -35,7 +36,7 @@ const CarCard = ({ car, showRentalPrice = false }) => {
     
     // If it's a relative path (starts with /uploads), prepend server URL
     if (imagePath.startsWith('/uploads')) {
-      const serverUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+      const serverUrl = API_ORIGIN;
       return `${serverUrl}${imagePath}`;
     }
     

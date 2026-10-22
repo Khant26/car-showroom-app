@@ -198,7 +198,7 @@ const Home = () => {
           
           <div className="text-center mt-12">
             <Link
-              to="/brands"
+              to="/cars"
               className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-700 to-red-600 text-gold-200 px-8 py-3 rounded-lg font-semibold text-lg hover:from-red-800 hover:to-red-700 transition-all duration-300 shadow-lg shadow-red-900/30 hover:shadow-red-900/50"
             >
               <span>{translate('home.brands.viewAll')}</span>

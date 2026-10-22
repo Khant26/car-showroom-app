@@ -1,3 +1,4 @@
+import { API_ORIGIN } from '../config/api';
 /**
  * Helper function to get proper image URL
  * Converts relative paths to absolute URLs by prepending server URL
@@ -12,7 +13,7 @@ export const getImageUrl = (imagePath) => {
   
   // If it's a relative path (starts with /uploads), prepend server URL
   if (imagePath.startsWith('/uploads')) {
-    const serverUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+    const serverUrl = API_ORIGIN;
     return `${serverUrl}${imagePath}`;
   }
   

@@ -117,8 +117,16 @@ router.get('/me', protect, async (req, res) => {
 
 // @desc    Create admin user (Only for initial setup)
 // @route   POST /api/auth/admin/create
-// @access  Public (should be restricted in production)
-router.post('/admin/create', [
+// @access  Public, but disabled unless ALLOW_ADMIN_SETUP=true (first-run bootstrap only)
+const adminSetupEnabled = (req, res, next) => {
+  if (process.env.ALLOW_ADMIN_SETUP === 'true') return next();
+  return res.status(403).json({
+    success: false,
+    message: 'Admin setup endpoint is disabled (set ALLOW_ADMIN_SETUP=true to enable)'
+  });
+};
+
+router.post('/admin/create', adminSetupEnabled, [
   body('name').notEmpty().withMessage('Name is required'),
   body('email').isEmail().withMessage('Please provide a valid email'),
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters')

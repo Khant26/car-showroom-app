@@ -7,8 +7,10 @@ const {
   uploadCars, 
   uploadBrands, 
   uploadBanners, 
-  uploadRentals 
+  uploadRentals,
+  uploadDir
 } = require('../middleware/upload');
+const { protect, adminOnly } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -27,6 +29,22 @@ const getUploadMiddleware = (type) => {
   }
 };
 
+const UPLOAD_TYPES = ['cars', 'brands', 'banners', 'rentals'];
+
+// Only allow known upload folders; anything else falls back to cars.
+const normalizeType = (type) => (UPLOAD_TYPES.includes(type) ? type : 'cars');
+
+// Resolve a file inside the uploads folder, rejecting path traversal
+// (e.g. "../server.js" or "..%2F.env"). Returns null for invalid input.
+const resolveUploadPath = (type, filename) => {
+  if (!UPLOAD_TYPES.includes(type)) return null;
+  if (!filename || filename !== path.basename(filename) || filename.startsWith('.')) return null;
+  return path.join(uploadDir, type, filename);
+};
+
+const invalidPath = (res) =>
+  res.status(400).json({ success: false, message: 'Invalid file path' });
+
 // Test route
 router.get('/', (req, res) => {
   res.json({
@@ -42,8 +60,8 @@ router.get('/', (req, res) => {
 });
 
 // Upload single image
-router.post('/single', (req, res) => {
-  const type = req.query.type || 'cars';
+router.post('/single', protect, adminOnly, (req, res) => {
+  const type = normalizeType(req.query.type);
   const uploadMiddleware = getUploadMiddleware(type);
   
   uploadMiddleware.single(req, res, (err) => {
@@ -78,8 +96,8 @@ router.post('/single', (req, res) => {
 });
 
 // Upload multiple images
-router.post('/multiple', (req, res) => {
-  const type = req.query.type || 'cars';
+router.post('/multiple', protect, adminOnly, (req, res) => {
+  const type = normalizeType(req.query.type);
   const uploadMiddleware = getUploadMiddleware(type);
   
   uploadMiddleware.multiple(req, res, (err) => {
@@ -114,10 +132,11 @@ router.post('/multiple', (req, res) => {
 });
 
 // Delete image
-router.delete('/:type/:filename', (req, res) => {
+router.delete('/:type/:filename', protect, adminOnly, (req, res) => {
   try {
     const { type, filename } = req.params;
-    const filePath = path.join(__dirname, '../uploads', type, filename);
+    const filePath = resolveUploadPath(type, filename);
+    if (!filePath) return invalidPath(res);
 
     // Check if file exists
     if (!fs.existsSync(filePath)) {
@@ -148,10 +167,11 @@ router.delete('/:type/:filename', (req, res) => {
 });
 
 // Backward compatibility - delete from cars folder
-router.delete('/:filename', (req, res) => {
+router.delete('/:filename', protect, adminOnly, (req, res) => {
   try {
     const { filename } = req.params;
-    const filePath = path.join(__dirname, '../uploads/cars', filename);
+    const filePath = resolveUploadPath('cars', filename);
+    if (!filePath) return invalidPath(res);
 
     // Check if file exists
     if (!fs.existsSync(filePath)) {
@@ -181,7 +201,8 @@ router.delete('/:filename', (req, res) => {
 router.get('/info/:type/:filename', (req, res) => {
   try {
     const { type, filename } = req.params;
-    const filePath = path.join(__dirname, '../uploads', type, filename);
+    const filePath = resolveUploadPath(type, filename);
+    if (!filePath) return invalidPath(res);
 
     // Check if file exists
     if (!fs.existsSync(filePath)) {
@@ -217,7 +238,8 @@ router.get('/info/:type/:filename', (req, res) => {
 router.get('/info/:filename', (req, res) => {
   try {
     const { filename } = req.params;
-    const filePath = path.join(__dirname, '../uploads/cars', filename);
+    const filePath = resolveUploadPath('cars', filename);
+    if (!filePath) return invalidPath(res);
 
     // Check if file exists
     if (!fs.existsSync(filePath)) {

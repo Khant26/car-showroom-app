@@ -3,7 +3,9 @@ const path = require('path');
 const fs = require('fs');
 
 // Ensure upload directories exist
-const uploadDir = path.join(__dirname, '../uploads');
+// UPLOAD_DIR lets deployments point uploads at a persistent volume.
+const uploadDir = path.resolve(process.env.UPLOAD_DIR || path.join(__dirname, '../uploads'));
+const maxFileSize = Number(process.env.MAX_FILE_SIZE) || 5 * 1024 * 1024; // bytes, default 5MB
 const carsUploadDir = path.join(uploadDir, 'cars');
 const brandsUploadDir = path.join(uploadDir, 'brands');
 const bannersUploadDir = path.join(uploadDir, 'banners');
@@ -49,7 +51,7 @@ const createUpload = (uploadType = 'cars') => {
     storage: createStorage(uploadType),
     fileFilter: fileFilter,
     limits: {
-      fileSize: 5 * 1024 * 1024, // 5MB limit
+      fileSize: maxFileSize,
     }
   });
 };
@@ -73,5 +75,6 @@ module.exports = {
   uploadBrands,
   uploadBanners,
   uploadRentals,
-  createUpload
+  createUpload,
+  uploadDir
 };

@@ -6,6 +6,8 @@ node_modules/
 .env.local
 .env.development
 .env.production
+.env.*
+!.env.example
 
 # Logs
 logs/
@@ -31,3 +33,5 @@ Thumbs.db
 .idea/
 *.sublime-workspace
 *.sublime-project
+# Build output (e.g. from switching to the frontend branch)
+dist/

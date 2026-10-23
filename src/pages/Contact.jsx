@@ -38,20 +38,20 @@ const Contact = () => {
     {
       icon: FaPhone,
       title: translate('contact.info.phone'),
-      details: '0943318891 / 0909833149',
-      link: 'tel:0943318891'
+      details: '02-000-0101 / 02-000-0102',
+      link: 'tel:+6620000101'
     },
     {
       icon: FaEnvelope,
       title: translate('contact.info.email'),
-      details: 'successdiamond30@gmail.com',
-      link: 'mailto:successdiamond30@gmail.com'
+      details: 'hello@carshowroom.example',
+      link: 'mailto:hello@carshowroom.example'
     },
     {
       icon: FaMapMarkerAlt,
       title: translate('contact.info.address'),
-      details: '599/1-599/11, On Nut Rd, Prawet, Bangkok 10250',
-      link: 'https://maps.app.goo.gl/3AifPCLFQG5QgfTD6'
+      details: '88 Demo Avenue, Sample District, Bangkok 10000',
+      link: 'https://maps.google.com/?q=Bangkok'
     },
     {
       icon: FaClock,
@@ -138,9 +138,9 @@ const Contact = () => {
               {translate('contact.visit.desc')}
             </p>
             <div className="text-sm text-gold-300">
-              <p>📍 599/1-599/11, On Nut Rd, Prawet, Bangkok 10250, Thailand</p>
-              <p>📞 0943318891 / 0909833149</p>
-              <p>📧 successdiamond30@gmail.com</p>
+              <p>📍 88 Demo Avenue, Sample District, Bangkok 10000, Thailand</p>
+              <p>📞 02-000-0101 / 02-000-0102</p>
+              <p>📧 hello@carshowroom.example</p>
             </div>
           </div>
         </div>

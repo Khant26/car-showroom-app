@@ -64,7 +64,7 @@ const Login = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="admin@carshowroom.com"
+                  placeholder="admin@carshowroom.example"
                 />
               </div>
             </div>
@@ -115,7 +115,7 @@ const Login = () => {
           {/* Demo Credentials */}
           <div className="mt-6 p-4 bg-gray-50 rounded-lg">
             <p className="text-sm text-gray-600 mb-2 font-medium">Demo Credentials:</p>
-            <p className="text-sm text-gray-500">Email: admin@carshowroom.com</p>
+            <p className="text-sm text-gray-500">Email: admin@carshowroom.example</p>
             <p className="text-sm text-gray-500">Password: admin123</p>
           </div>
         </div>

@@ -93,35 +93,35 @@ const Footer = () => {
                 <div className="flex items-start space-x-4 p-3 rounded-lg bg-black-light border border-gold-900/50 hover:border-primary-500/50 transition-all duration-300">
                   <FaPhone className="text-primary-400 flex-shrink-0 mt-1 text-lg" />
                   <div className="text-gray-300 text-sm space-y-1">
-                    <div className="font-medium">0943318891</div>
-                    <div className="font-medium">0909833149</div>
+                    <div className="font-medium">02-000-0101</div>
+                    <div className="font-medium">02-000-0102</div>
                   </div>
                 </div>
               </div>
               
               <div className="group">
                 <a 
-                  href="mailto:successdiamond30@gmail.com"
+                  href="mailto:hello@carshowroom.example"
                   className="flex items-center space-x-4 p-3 rounded-lg bg-black-light border border-gold-900/50 hover:border-primary-500/50 hover:bg-black transition-all duration-300"
                 >
                   <FaEnvelope className="text-primary-400 flex-shrink-0 text-lg" />
                   <span className="text-gray-300 text-sm font-medium hover:text-primary-400 transition-colors duration-200">
-                    successdiamond30@gmail.com
+                    hello@carshowroom.example
                   </span>
                 </a>
               </div>
               
               <div className="group">
                 <a 
-                  href="https://maps.app.goo.gl/3AifPCLFQG5QgfTD6"
+                  href="https://maps.google.com/?q=Bangkok"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start space-x-4 p-3 rounded-lg bg-black-light border border-gold-900/50 hover:border-primary-500/50 hover:bg-black transition-all duration-300"
                 >
                   <FaMapMarkerAlt className="text-primary-400 flex-shrink-0 mt-1 text-lg" />
                   <div className="text-gray-300 text-sm font-medium hover:text-primary-400 transition-colors duration-200">
-                    599/1-599/11, On Nut Rd,<br />
-                    Prawet, Bangkok 10250<br />
+                    88 Demo Avenue,<br />
+                    Sample District, Bangkok 10000<br />
                     Thailand
                   </div>
                 </a>

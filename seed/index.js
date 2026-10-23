@@ -67,7 +67,11 @@ const ensureAdmin = async ({ log = console.log } = {}) => {
 
 // Called from server.js after MongoDB connects.
 const runStartupTasks = async ({ log = console.log } = {}) => {
-  await ensureAdmin({ log });
+  try {
+    await ensureAdmin({ log });
+  } catch (err) {
+    log(`admin: could not create ${process.env.ADMIN_EMAIL}: ${err.message}`);
+  }
   if (isTruthy(process.env.SEED_DEMO)) {
     await seedDemo({ log });
   }

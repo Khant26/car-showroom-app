@@ -1,6 +1,7 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const app = require("./app");
+const { runStartupTasks } = require("./seed");
 
 const PORT = Number(process.env.PORT) || 5001;
 const HOST = process.env.HOST || "0.0.0.0";
@@ -30,7 +31,16 @@ mongoose
   .connect(MONGODB_URI, {
     serverSelectionTimeoutMS: Number(process.env.MONGODB_TIMEOUT_MS) || 10000,
   })
-  .then((conn) => console.log(`MongoDB Connected: ${conn.connection.host}`))
+  .then(async (conn) => {
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    // Admin bootstrap + optional demo seed (SEED_DEMO=1). Failures are logged
+    // but do not stop the API.
+    try {
+      await runStartupTasks();
+    } catch (err) {
+      console.error("Startup seeding failed:", err.message);
+    }
+  })
   .catch((error) => {
     console.error("Database connection error:", error.message);
     process.exit(1);

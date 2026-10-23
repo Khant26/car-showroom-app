@@ -4,13 +4,14 @@ const { body, validationResult } = require('express-validator');
 const Car = require('../models/Car');
 const Brand = require('../models/Brand');
 const { protect, adminOnly } = require('../middleware/auth');
+const { escapeRegex, exactInsensitive } = require('../utils/regex');
 
 // @desc    Get all cars
 // @route   GET /api/cars
 // @access  Public
 router.get('/', async (req, res) => {
   try {
-    const {
+    let {
       page = 1,
       limit = 10,
       search,
@@ -34,7 +35,7 @@ router.get('/', async (req, res) => {
     }
     
     if (brand) {
-      query.brand = { $regex: new RegExp(brand, 'i') };
+      query.brand = { $regex: new RegExp(escapeRegex(brand), 'i') };
     }
     
     if (category) {
@@ -76,7 +77,9 @@ router.get('/', async (req, res) => {
     else if (sort === 'name') sortObj.name = 1;
     else sortObj.createdAt = -1;
 
-    // Pagination
+    // Pagination (bounded so a public request cannot ask for everything)
+    page = Math.max(1, parseInt(page, 10) || 1);
+    limit = Math.min(100, Math.max(1, parseInt(limit, 10) || 10));
     const skip = (page - 1) * limit;
     
     const cars = await Car.find(query)
@@ -191,7 +194,7 @@ router.post('/', protect, adminOnly, [
 
     // Validate that brand exists
     const brandExists = await Brand.findOne({ 
-      name: { $regex: new RegExp(`^${req.body.brand}$`, 'i') } 
+      name: { $regex: exactInsensitive(req.body.brand) } 
     });
     
     if (!brandExists) {
@@ -254,7 +257,7 @@ router.put('/:id', protect, adminOnly, [
     // If brand is being changed, validate new brand exists
     if (req.body.brand && req.body.brand !== currentCar.brand) {
       const brandExists = await Brand.findOne({ 
-        name: { $regex: new RegExp(`^${req.body.brand}$`, 'i') } 
+        name: { $regex: exactInsensitive(req.body.brand) } 
       });
       
       if (!brandExists) {
@@ -266,7 +269,7 @@ router.put('/:id', protect, adminOnly, [
 
       // Update car counts for old and new brands
       const oldBrand = await Brand.findOne({ 
-        name: { $regex: new RegExp(`^${currentCar.brand}$`, 'i') } 
+        name: { $regex: exactInsensitive(currentCar.brand) } 
       });
       
       if (oldBrand) {
@@ -312,7 +315,7 @@ router.delete('/:id', protect, adminOnly, async (req, res) => {
 
     // Update brand car count
     const brand = await Brand.findOne({ 
-      name: { $regex: new RegExp(`^${car.brand}$`, 'i') } 
+      name: { $regex: exactInsensitive(car.brand) } 
     });
     
     if (brand) {

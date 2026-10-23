@@ -3,6 +3,7 @@ const router = express.Router();
 const SoldCar = require("../models/SoldCar");
 const { protect, adminOnly } = require("../middleware/auth"); // Changed from authorize to adminOnly
 const { uploadCars } = require("../middleware/upload");
+const { toPublicUrl } = require("../utils/publicUrl");
 
 // Get all sold cars
 router.get("/", async (req, res) => {
@@ -22,9 +23,6 @@ router.post(
   uploadCars.single("image"),
   async (req, res) => {
     try {
-      console.log("Received body:", req.body);
-      console.log("Received file:", req.file);
-
       const soldCarData = {
         name: req.body.name,
         description: req.body.description,
@@ -33,7 +31,7 @@ router.post(
 
       // Handle image
       if (req.file) {
-        soldCarData.image = `/uploads/cars/${req.file.filename}`;
+        soldCarData.image = toPublicUrl(`/uploads/cars/${req.file.filename}`);
       } else if (req.body.image) {
         soldCarData.image = req.body.image;
       } else if (req.body.imageUrl) {
@@ -58,10 +56,6 @@ router.put(
   uploadCars.single("image"),
   async (req, res) => {
     try {
-      console.log("Updating sold car:", req.params.id);
-      console.log("Received body:", req.body);
-      console.log("Received file:", req.file);
-
       const soldCarData = {
         name: req.body.name,
         description: req.body.description,
@@ -70,7 +64,7 @@ router.put(
 
       // Handle image update
       if (req.file) {
-        soldCarData.image = `/uploads/cars/${req.file.filename}`;
+        soldCarData.image = toPublicUrl(`/uploads/cars/${req.file.filename}`);
       } else if (req.body.imageUrl) {
         soldCarData.image = req.body.imageUrl;
       } else if (req.body.removeImage === "true") {

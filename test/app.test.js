@@ -1,6 +1,7 @@
 // Smoke tests that run without a MongoDB server.
 process.env.NODE_ENV = "test";
 process.env.JWT_SECRET = process.env.JWT_SECRET || "test-only-secret";
+process.env.CORS_ORIGIN = "https://carshowroom.khantmaung.com";
 
 const { test, before, after } = require("node:test");
 const assert = require("node:assert/strict");
@@ -66,4 +67,57 @@ test("disallowed CORS origins are rejected", async () => {
     headers: { Origin: "https://evil.example.com" },
   });
   assert.equal(res.status, 403);
+});
+
+test("configured CORS origin is allowed", async () => {
+  const res = await fetch(`${base}/health`, {
+    headers: { Origin: "https://carshowroom.khantmaung.com" },
+  });
+  assert.equal(res.status, 200);
+  assert.equal(
+    res.headers.get("access-control-allow-origin"),
+    "https://carshowroom.khantmaung.com"
+  );
+});
+
+test("toPublicUrl uses PUBLIC_URL when set", () => {
+  const { toPublicUrl } = require("../utils/publicUrl");
+  const prev = process.env.PUBLIC_URL;
+  try {
+    delete process.env.PUBLIC_URL;
+    assert.equal(toPublicUrl("/uploads/cars/a.jpg"), "/uploads/cars/a.jpg");
+    process.env.PUBLIC_URL = "https://api-carshowroom.khantmaung.com/";
+    assert.equal(
+      toPublicUrl("/uploads/cars/a.jpg"),
+      "https://api-carshowroom.khantmaung.com/uploads/cars/a.jpg"
+    );
+  } finally {
+    if (prev === undefined) delete process.env.PUBLIC_URL;
+    else process.env.PUBLIC_URL = prev;
+  }
+});
+
+test("regex helpers escape user input", () => {
+  const { exactInsensitive } = require("../utils/regex");
+  assert.ok(exactInsensitive("Mercedes-Benz").test("mercedes-benz"));
+  assert.ok(!exactInsensitive(".*").test("anything"));
+});
+
+test("demo data passes model validation", async () => {
+  const data = require("../seed/demoData");
+  const models = {
+    banners: require("../models/Banner"),
+    brands: require("../models/Brand"),
+    cars: require("../models/Car"),
+    rentals: require("../models/Rental"),
+    soldCars: require("../models/SoldCar"),
+  };
+  for (const [key, Model] of Object.entries(models)) {
+    assert.ok(data[key].length > 0, key);
+    for (const doc of data[key]) {
+      await new Model(doc).validate();
+    }
+  }
+  const brandNames = new Set(data.brands.map((b) => b.name));
+  for (const car of data.cars) assert.ok(brandNames.has(car.brand), car.name);
 });

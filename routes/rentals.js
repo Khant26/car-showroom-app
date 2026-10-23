@@ -3,13 +3,14 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const Rental = require('../models/Rental');
 const { protect, adminOnly } = require('../middleware/auth');
+const { escapeRegex } = require('../utils/regex');
 
 // @desc    Get all rentals
 // @route   GET /api/rentals
 // @access  Public
 router.get('/', async (req, res) => {
   try {
-    const {
+    let {
       page = 1,
       limit = 10,
       brand,
@@ -29,10 +30,10 @@ router.get('/', async (req, res) => {
     
     if (search) {
       query.$or = [
-        { name: { $regex: search, $options: 'i' } },
-        { brand: { $regex: search, $options: 'i' } },
-        { model: { $regex: search, $options: 'i' } },
-        { description: { $regex: search, $options: 'i' } }
+        { name: { $regex: escapeRegex(search), $options: 'i' } },
+        { brand: { $regex: escapeRegex(search), $options: 'i' } },
+        { model: { $regex: escapeRegex(search), $options: 'i' } },
+        { description: { $regex: escapeRegex(search), $options: 'i' } }
       ];
     }
 
@@ -46,7 +47,9 @@ router.get('/', async (req, res) => {
     const sortObj = {};
     sortObj[sort] = order === 'desc' ? -1 : 1;
     
-    // Pagination
+    // Pagination (bounded so a public request cannot ask for everything)
+    page = Math.max(1, parseInt(page, 10) || 1);
+    limit = Math.min(100, Math.max(1, parseInt(limit, 10) || 10));
     const skip = (page - 1) * limit;
     
     const rentals = await Rental.find(query)

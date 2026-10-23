@@ -4,6 +4,7 @@ const { body, validationResult } = require('express-validator');
 const Brand = require('../models/Brand');
 const Car = require('../models/Car');
 const { protect, adminOnly } = require('../middleware/auth');
+const { exactInsensitive } = require('../utils/regex');
 
 // @desc    Get all brands
 // @route   GET /api/brands
@@ -73,7 +74,7 @@ router.get('/:id', async (req, res) => {
 router.get('/name/:name', async (req, res) => {
   try {
     const brand = await Brand.findOne({ 
-      name: { $regex: new RegExp(`^${req.params.name}$`, 'i') } 
+      name: { $regex: exactInsensitive(req.params.name) } 
     });
     
     if (!brand) {
@@ -118,7 +119,7 @@ router.post('/', protect, adminOnly, [
 
     // Check if brand already exists
     const existingBrand = await Brand.findOne({ 
-      name: { $regex: new RegExp(`^${req.body.name}$`, 'i') } 
+      name: { $regex: exactInsensitive(req.body.name) } 
     });
     
     if (existingBrand) {
@@ -164,7 +165,7 @@ router.put('/:id', protect, adminOnly, [
     // Check if brand name already exists (if name is being updated)
     if (req.body.name) {
       const existingBrand = await Brand.findOne({ 
-        name: { $regex: new RegExp(`^${req.body.name}$`, 'i') },
+        name: { $regex: exactInsensitive(req.body.name) },
         _id: { $ne: req.params.id }
       });
       

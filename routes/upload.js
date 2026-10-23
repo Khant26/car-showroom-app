@@ -11,6 +11,7 @@ const {
   uploadDir
 } = require('../middleware/upload');
 const { protect, adminOnly } = require('../middleware/auth');
+const { toPublicUrl } = require('../utils/publicUrl');
 
 const router = express.Router();
 
@@ -79,7 +80,8 @@ router.post('/single', protect, adminOnly, (req, res) => {
       });
     }
 
-    const imageUrl = `/uploads/${type}/${req.file.filename}`;
+    const imagePath = `/uploads/${type}/${req.file.filename}`;
+    const imageUrl = toPublicUrl(imagePath);
     
     res.status(200).json({
       success: true,
@@ -88,6 +90,7 @@ router.post('/single', protect, adminOnly, (req, res) => {
         filename: req.file.filename,
         originalName: req.file.originalname,
         url: imageUrl,
+        path: imagePath,
         size: req.file.size,
         type: type
       }
@@ -118,7 +121,8 @@ router.post('/multiple', protect, adminOnly, (req, res) => {
     const images = req.files.map(file => ({
       filename: file.filename,
       originalName: file.originalname,
-      url: `/uploads/${type}/${file.filename}`,
+      url: toPublicUrl(`/uploads/${type}/${file.filename}`),
+      path: `/uploads/${type}/${file.filename}`,
       size: file.size
     }));
 
@@ -218,7 +222,7 @@ router.get('/info/:type/:filename', (req, res) => {
       success: true,
       data: {
         filename,
-        url: `/uploads/${type}/${filename}`,
+        url: toPublicUrl(`/uploads/${type}/${filename}`),
         size: stats.size,
         type: type,
         createdAt: stats.birthtime,
@@ -255,7 +259,7 @@ router.get('/info/:filename', (req, res) => {
       success: true,
       data: {
         filename,
-        url: `/uploads/cars/${filename}`,
+        url: toPublicUrl(`/uploads/cars/${filename}`),
         size: stats.size,
         createdAt: stats.birthtime,
         modifiedAt: stats.mtime

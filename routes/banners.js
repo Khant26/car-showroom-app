@@ -202,7 +202,11 @@ router.patch('/:id/status', protect, adminOnly, async (req, res) => {
 // @access  Private/Admin
 router.patch('/reorder', protect, adminOnly, async (req, res) => {
   try {
-    const { banners } = req.body; // Array of { id, order }
+    // Accepts either { orderedIds: [id, ...] } (what the admin UI sends; the
+    // array index becomes the order) or { banners: [{ id, order }, ...] }.
+    const banners = Array.isArray(req.body.orderedIds)
+      ? req.body.orderedIds.map((id, index) => ({ id, order: index }))
+      : req.body.banners;
     
     if (!Array.isArray(banners)) {
       return res.status(400).json({

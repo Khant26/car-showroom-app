@@ -33,7 +33,7 @@ const CarDetail = () => {
 
   // Helper function to get proper image URL
   const getImageUrl = (imagePath) => {
-    if (!imagePath) return '/placeholder-car.jpg';
+    if (!imagePath) return 'https://cdn.pixabay.com/photo/2016/11/29/09/32/auto-1868726_1280.jpg';
     
     // If it's already a full URL, return as is
     if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {

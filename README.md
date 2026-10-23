@@ -9,6 +9,9 @@ The admin dashboard used to live on the `admin` branch / the separate `car-showr
 
 The Express + MongoDB API lives on the [`backend`](../../tree/backend) branch.
 
+**Live demo:** https://carshowroom.khantmaung.com (admin: https://carshowroom.khantmaung.com/admin),
+backed by the API at https://api-carshowroom.khantmaung.com. All brands, cars and prices are fictional demo data.
+
 ## Routes
 
 | Path | Page |
@@ -36,7 +39,7 @@ Copy `.env.example` to `.env.local` (git-ignored) and adjust:
 
 | Variable | Description | Default |
 |---|---|---|
-| `VITE_API_URL` | Base URL of the API **including** `/api`. Used by both the customer site and the admin dashboard; image paths like `/uploads/...` are resolved against its origin. | `http://localhost:5001/api` |
+| `VITE_API_URL` | Base URL of the API **including** `/api`, e.g. `https://api-carshowroom.khantmaung.com/api` in production. Used by both the customer site and the admin dashboard; image paths like `/uploads/...` are resolved against its origin (absolute image URLs are used as-is). | dev: `http://localhost:5001/api`; production build without it: same-origin `/api` |
 
 `VITE_*` values are embedded into the public JS bundle at build time, so never put secrets in them.
 
@@ -60,7 +63,7 @@ npm run preview
 
 ## Deploy (Vercel)
 
-`vercel.json` rewrites every non-file path to `index.html`, so deep links such as `/cars/123` or `/admin/cars` work after a refresh. Set `VITE_API_URL` in the Vercel project settings and add the deployed site's origin to the API's `FRONTEND_URL` / `ADMIN_URL` (CORS).
+`vercel.json` rewrites every non-file path to `index.html`, so deep links such as `/cars/123` or `/admin/cars` work after a refresh. Set `VITE_API_URL=https://api-carshowroom.khantmaung.com/api` in the Vercel project settings (it is baked in at build time, so redeploy after changing it) and make sure the API's `CORS_ORIGIN` includes `https://carshowroom.khantmaung.com`.
 
 ## Project layout
 

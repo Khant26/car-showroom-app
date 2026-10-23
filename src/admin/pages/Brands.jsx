@@ -501,7 +501,7 @@ const Brands = () => {
                   {viewingBrand.logo && (
                     <div className="text-center">
                       <img
-                        src={viewingBrand.logo}
+                        src={getImageUrl(viewingBrand.logo)}
                         alt={viewingBrand.name}
                         className="max-h-32 max-w-32 object-contain mx-auto"
                         onError={(e) => {

@@ -31,7 +31,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-black via-red-900 to-black py-16">
+      <section className="bg-gradient-to-r from-black via-gold-900 to-black py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-gold-500">{translate('about.title')}</h1>
           <p className="text-xl lg:text-2xl max-w-3xl mx-auto text-gold-300">
@@ -58,7 +58,7 @@ const About = () => {
                 {translate('about.story.text3')}
               </p>
             </div>
-            <div className="border-2 border-red-800 p-1 rounded-lg">
+            <div className="border-2 border-gold-800 p-1 rounded-lg">
               <img
                 src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="Car Showroom"
@@ -70,7 +70,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 bg-gradient-to-r from-red-900 via-black to-red-900">
+      <section className="py-16 bg-gradient-to-r from-gold-900 via-black to-gold-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gold-500 mb-4">
@@ -85,9 +85,9 @@ const About = () => {
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
-                <div key={index} className="text-center p-6 bg-black bg-opacity-50 border border-red-800 rounded-lg shadow-md hover:border-gold-500 transition-all duration-300">
+                <div key={index} className="text-center p-6 bg-black bg-opacity-50 border border-gold-800 rounded-lg shadow-md hover:border-gold-500 transition-all duration-300">
                   <div className="flex justify-center mb-4">
-                    <Icon className="text-4xl text-red-600" />
+                    <Icon className="text-4xl text-gold-600" />
                   </div>
                   <h3 className="text-xl font-semibold text-gold-400 mb-3">
                     {value.title}

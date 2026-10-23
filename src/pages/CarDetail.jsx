@@ -165,12 +165,12 @@ const CarDetail = () => {
   if (error) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-center bg-black bg-opacity-70 p-10 rounded-lg border border-red-900/30 shadow-lg max-w-md">
+        <div className="text-center bg-black bg-opacity-70 p-10 rounded-lg border border-gold-900/30 shadow-lg max-w-md">
           <h2 className="text-2xl font-bold text-gold-400 mb-4">Error Loading Car</h2>
           <p className="text-gold-300 mb-6">{error}</p>
           <Link
             to="/cars"
-            className="bg-gradient-to-r from-red-700 to-red-600 text-gold-200 px-6 py-3 rounded-lg hover:from-red-800 hover:to-red-700 transition-all duration-300 shadow-md hover:shadow-red-900/50 inline-flex items-center"
+            className="bg-gradient-to-r from-gold-700 to-gold-600 text-gold-200 px-6 py-3 rounded-lg hover:from-gold-800 hover:to-gold-700 transition-all duration-300 shadow-md hover:shadow-gold-900/50 inline-flex items-center"
           >
             <FaArrowLeft className="mr-2" /> Back to Cars
           </Link>
@@ -182,12 +182,12 @@ const CarDetail = () => {
   if (!car) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-center bg-black bg-opacity-70 p-10 rounded-lg border border-red-900/30 shadow-lg max-w-md">
+        <div className="text-center bg-black bg-opacity-70 p-10 rounded-lg border border-gold-900/30 shadow-lg max-w-md">
           <h2 className="text-2xl font-bold text-gold-400 mb-4">Car Not Found</h2>
           <p className="text-gold-300 mb-6">Sorry, we couldn’t find the car you’re looking for.</p>
           <Link
             to="/cars"
-            className="bg-gradient-to-r from-red-700 to-red-600 text-gold-200 px-6 py-3 rounded-lg hover:from-red-800 hover:to-red-700 transition-all duration-300 shadow-md hover:shadow-red-900/50 inline-flex items-center"
+            className="bg-gradient-to-r from-gold-700 to-gold-600 text-gold-200 px-6 py-3 rounded-lg hover:from-gold-800 hover:to-gold-700 transition-all duration-300 shadow-md hover:shadow-gold-900/50 inline-flex items-center"
           >
             <FaArrowLeft className="mr-2" /> Back to Cars
           </Link>
@@ -197,13 +197,13 @@ const CarDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-red-950/10">
+    <div className="min-h-screen bg-gradient-to-b from-black to-gold-950/10">
       {/* Navigation */}
-      <div className="bg-black shadow-md border-b border-red-900/20">
+      <div className="bg-black shadow-md border-b border-gold-900/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link
             to="/cars"
-            className="inline-flex items-center space-x-2 text-gold-400 hover:text-red-500 transition-all duration-300 group"
+            className="inline-flex items-center space-x-2 text-gold-400 hover:text-gold-500 transition-all duration-300 group"
           >
             <FaArrowLeft className="transform group-hover:-translate-x-1 transition-transform duration-300" />
             <span>Back to Cars</span>
@@ -226,7 +226,7 @@ const CarDetail = () => {
       <div className="w-full bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Main Image - Enhanced Styling */}
-          <div className="relative bg-gradient-to-b from-red-950/10 to-black rounded-lg overflow-hidden p-4 shadow-lg border border-red-900/20">
+          <div className="relative bg-gradient-to-b from-gold-950/10 to-black rounded-lg overflow-hidden p-4 shadow-lg border border-gold-900/20">
             <img
               src={getImageUrl(car.images?.[currentImageIndex])}
               alt={car.name}
@@ -239,13 +239,13 @@ const CarDetail = () => {
               <>
                 <button
                   onClick={prevImage}
-                  className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-gold-400 p-3 rounded-full hover:bg-red-900 hover:text-gold-300 transition-all duration-300 shadow-lg"
+                  className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-gold-400 p-3 rounded-full hover:bg-gold-900 hover:text-gold-300 transition-all duration-300 shadow-lg"
                 >
                   <FaArrowLeft size={20} />
                 </button>
                 <button
                   onClick={nextImage}
-                  className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-gold-400 p-3 rounded-full hover:bg-red-900 hover:text-gold-300 transition-all duration-300 shadow-lg"
+                  className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-gold-400 p-3 rounded-full hover:bg-gold-900 hover:text-gold-300 transition-all duration-300 shadow-lg"
                 >
                   <FaArrowRight size={20} />
                 </button>
@@ -254,13 +254,13 @@ const CarDetail = () => {
 
             {/* Image Counter - Enhanced */}
             {car.images && car.images.length > 1 && (
-              <div className="absolute bottom-6 right-6 bg-black bg-opacity-70 text-gold-400 px-4 py-2 rounded-full text-sm font-medium border border-red-900/30 shadow-md">
+              <div className="absolute bottom-6 right-6 bg-black bg-opacity-70 text-gold-400 px-4 py-2 rounded-full text-sm font-medium border border-gold-900/30 shadow-md">
                 {currentImageIndex + 1} / {car.images.length}
               </div>
             )}
             
             {/* Zoom Icon */}
-            <div className="absolute bottom-6 left-6 bg-black bg-opacity-70 text-gold-400 px-4 py-2 rounded-full text-sm font-medium border border-red-900/30 shadow-md flex items-center">
+            <div className="absolute bottom-6 left-6 bg-black bg-opacity-70 text-gold-400 px-4 py-2 rounded-full text-sm font-medium border border-gold-900/30 shadow-md flex items-center">
               <FaSearchPlus className="mr-2" /> Click to view fullscreen
             </div>
           </div>
@@ -274,7 +274,7 @@ const CarDetail = () => {
                     key={index} 
                     className={`relative cursor-pointer ${
                       index === currentImageIndex
-                        ? 'ring-2 ring-red-500 ring-offset-2 ring-offset-gray-900'
+                        ? 'ring-2 ring-gold-500 ring-offset-2 ring-offset-gray-900'
                         : 'opacity-70 hover:opacity-100'
                     }`}
                     onClick={() => setCurrentImageIndex(index)}
@@ -285,7 +285,7 @@ const CarDetail = () => {
                       className="h-16 w-16 sm:h-20 sm:w-20 object-cover rounded transition-all duration-200"
                     />
                     {index === currentImageIndex && (
-                      <div className="absolute inset-0 border-2 border-red-500 rounded"></div>
+                      <div className="absolute inset-0 border-2 border-gold-500 rounded"></div>
                     )}
                   </div>
                 ))}
@@ -336,28 +336,28 @@ const CarDetail = () => {
               <div className="bg-black-light rounded-lg shadow-md p-6 border border-gold-900/30">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex items-center space-x-4 p-4 bg-black rounded-lg border border-gold-700/50">
-                    <FaGasPump className="text-red-600 text-2xl" />
+                    <FaGasPump className="text-gold-600 text-2xl" />
                     <div>
                       <div className="text-sm text-gold-400">{translate('car.fuelType')}</div>
                       <div className="font-medium text-lg text-gold-200">{car.specifications?.fuelType}</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-4 bg-black rounded-lg border border-gold-700/50">
-                    <FaCogs className="text-red-600 text-2xl" />
+                    <FaCogs className="text-gold-600 text-2xl" />
                     <div>
                       <div className="text-sm text-gold-400">{translate('car.transmission')}</div>
                       <div className="font-medium text-lg text-gold-200">{car.specifications?.transmission}</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-4 bg-black rounded-lg border border-gold-700/50">
-                    <FaUsers className="text-red-600 text-2xl" />
+                    <FaUsers className="text-gold-600 text-2xl" />
                     <div>
                       <div className="text-sm text-gold-400">{translate('car.seating')}</div>
                       <div className="font-medium text-lg text-gold-200">{car.specifications?.seating} {translate('car.seats')}</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-4 bg-black rounded-lg border border-gold-700/50">
-                    <FaTachometerAlt className="text-red-600 text-2xl" />
+                    <FaTachometerAlt className="text-gold-600 text-2xl" />
                     <div>
                       <div className="text-sm text-gold-400">{translate('car.engine')}</div>
                       <div className="font-medium text-lg text-gold-200">{car.specifications?.engine}</div>
@@ -404,7 +404,7 @@ const CarDetail = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {car.features.map((feature, index) => (
                     <div key={index} className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-red-600 rounded-full"></div>
+                      <div className="w-3 h-3 bg-gold-600 rounded-full"></div>
                       <span className="text-gold-300">{feature}</span>
                     </div>
                   ))}

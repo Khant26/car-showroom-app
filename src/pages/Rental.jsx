@@ -49,7 +49,7 @@ const Rental = () => {
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-black via-red-900 to-black py-16">
+      <section className="bg-gradient-to-r from-black via-gold-900 to-black py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-gold-500">
             {translate('rental.title')}
@@ -60,7 +60,7 @@ const Rental = () => {
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <a
               href="#rental-cars"
-              className="bg-red-600 text-gold-200 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-red-700 transition-colors duration-200"
+              className="bg-gold-600 text-gold-200 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gold-700 transition-colors duration-200"
             >
               {translate('rental.browse')}
             </a>
@@ -87,8 +87,8 @@ const Rental = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-black bg-opacity-50 border border-red-800 rounded-lg hover:border-gold-500 transition-all duration-300">
-              <div className="bg-red-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="text-center p-6 bg-black bg-opacity-50 border border-gold-800 rounded-lg hover:border-gold-500 transition-all duration-300">
+              <div className="bg-gold-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-gold-500">1</span>
               </div>
               <h3 className="text-xl font-semibold text-gold-400 mb-3">
@@ -99,8 +99,8 @@ const Rental = () => {
               </p>
             </div>
 
-            <div className="text-center p-6 bg-black bg-opacity-50 border border-red-800 rounded-lg hover:border-gold-500 transition-all duration-300">
-              <div className="bg-red-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="text-center p-6 bg-black bg-opacity-50 border border-gold-800 rounded-lg hover:border-gold-500 transition-all duration-300">
+              <div className="bg-gold-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-gold-500">2</span>
               </div>
               <h3 className="text-xl font-semibold text-gold-400 mb-3">
@@ -111,8 +111,8 @@ const Rental = () => {
               </p>
             </div>
 
-            <div className="text-center p-6 bg-black bg-opacity-50 border border-red-800 rounded-lg hover:border-gold-500 transition-all duration-300">
-              <div className="bg-red-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="text-center p-6 bg-black bg-opacity-50 border border-gold-800 rounded-lg hover:border-gold-500 transition-all duration-300">
+              <div className="bg-gold-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-gold-500">3</span>
               </div>
               <h3 className="text-xl font-semibold text-gold-400 mb-3">
@@ -127,7 +127,7 @@ const Rental = () => {
       </section>
 
       {/* Available Rental Cars */}
-      <section id="rental-cars" className="py-16 bg-gradient-to-r from-red-900 via-black to-red-900">
+      <section id="rental-cars" className="py-16 bg-gradient-to-r from-gold-900 via-black to-gold-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gold-500 mb-4">
@@ -159,7 +159,7 @@ const Rental = () => {
                         <button
                           onClick={() => handlePageChange(pagination.rentalCars.page - 1)}
                           disabled={pagination.rentalCars.page === 1}
-                          className="px-3 py-2 border border-red-800 text-gold-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-red-900 hover:bg-opacity-30"
+                          className="px-3 py-2 border border-gold-800 text-gold-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gold-900 hover:bg-opacity-30"
                         >
                           {translate('cars.pagination.previous')}
                         </button>
@@ -170,8 +170,8 @@ const Rental = () => {
                             onClick={() => handlePageChange(pageNum)}
                             className={`px-3 py-2 border rounded-lg ${
                               pageNum === pagination.rentalCars.page
-                                ? 'bg-red-600 text-gold-200 border-red-600'
-                                : 'border-red-800 text-gold-300 hover:bg-red-900 hover:bg-opacity-30'
+                                ? 'bg-gold-600 text-gold-200 border-gold-600'
+                                : 'border-gold-800 text-gold-300 hover:bg-gold-900 hover:bg-opacity-30'
                             }`}
                           >
                             {pageNum}
@@ -181,7 +181,7 @@ const Rental = () => {
                         <button
                           onClick={() => handlePageChange(pagination.rentalCars.page + 1)}
                           disabled={pagination.rentalCars.page === pagination.rentalCars.totalPages}
-                          className="px-3 py-2 border border-red-800 text-gold-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-red-900 hover:bg-opacity-30"
+                          className="px-3 py-2 border border-gold-800 text-gold-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gold-900 hover:bg-opacity-30"
                         >
                           {translate('cars.pagination.next')}
                         </button>
@@ -190,7 +190,7 @@ const Rental = () => {
                   )}
                 </>
               ) : (
-                <div className="text-center py-12 bg-black bg-opacity-60 rounded-lg border border-red-900 p-8">
+                <div className="text-center py-12 bg-black bg-opacity-60 rounded-lg border border-gold-900 p-8">
                   <div className="text-gold-400 text-lg mb-4">
                     {translate('rental.noCars')}
                   </div>

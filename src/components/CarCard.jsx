@@ -45,7 +45,7 @@ const CarCard = ({ car, showRentalPrice = false }) => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-black via-black to-red-950/30 rounded-lg overflow-hidden group border border-red-900/20 shadow-lg">
+    <div className="bg-gradient-to-b from-black via-black to-gold-950/30 rounded-lg overflow-hidden group border border-gold-900/20 shadow-lg">
       {/* Image */}
       <div className="relative overflow-hidden h-52">
         <img
@@ -65,12 +65,12 @@ const CarCard = ({ car, showRentalPrice = false }) => {
             </span>
           )}
           {isRental && showRentalPrice && (
-            <span className="bg-red-600 text-gold-200 px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+            <span className="bg-gold-600 text-gold-200 px-3 py-1 rounded-full text-xs font-semibold shadow-md">
               {translate('car.forRent')}
             </span>
           )}
           {status === 'sold' && (
-            <span className="bg-black/80 text-gold-400 border border-red-600 px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+            <span className="bg-black/80 text-gold-400 border border-gold-600 px-3 py-1 rounded-full text-xs font-semibold shadow-md">
               {translate('car.soldOut')}
             </span>
           )}
@@ -89,32 +89,32 @@ const CarCard = ({ car, showRentalPrice = false }) => {
           <h3 className="text-lg font-semibold text-gold-300 mb-1">{name}</h3>
           <div className="flex items-center justify-between">
             <span className="text-sm text-gold-400/80">{category}</span>
-            <span className="text-sm text-red-500 font-medium">{year}</span>
+            <span className="text-sm text-gold-500 font-medium">{year}</span>
           </div>
         </div>
 
         {/* Specifications */}
         <div className="grid grid-cols-2 gap-y-3 gap-x-4 mb-4 text-sm">
           <div className="flex items-center space-x-2">
-            <FaGasPump className="text-red-500" />
+            <FaGasPump className="text-gold-500" />
             <span className="text-gold-400/80">{specifications?.fuelType || 'N/A'}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <FaCogs className="text-red-500" />
+            <FaCogs className="text-gold-500" />
             <span className="text-gold-400/80">{specifications?.transmission || 'N/A'}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <FaUsers className="text-red-500" />
+            <FaUsers className="text-gold-500" />
             <span className="text-gold-400/80">{specifications?.seating || 'N/A'} {translate('car.seats')}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <FaCalendarAlt className="text-red-500" />
+            <FaCalendarAlt className="text-gold-500" />
             <span className="text-gold-400/80">{year}</span>
           </div>
         </div>
 
         {/* Price */}
-        <div className="mb-5 pt-2 border-t border-red-900/30">
+        <div className="mb-5 pt-2 border-t border-gold-900/30">
           <div className="text-2xl font-bold text-gold-400">
             {formatPrice(displayPrice)}
             {priceLabel && <span className="text-sm font-normal text-gold-300 ml-1">{priceLabel}</span>}
@@ -130,7 +130,7 @@ const CarCard = ({ car, showRentalPrice = false }) => {
         <div className="flex space-x-3">
           <Link
             to={`/cars/${_id}`}
-            className="flex-1 bg-gradient-to-r from-red-700 to-red-600 text-gold-200 text-center py-2.5 px-4 rounded-lg font-medium hover:from-red-800 hover:to-red-700 transition-all duration-300 shadow-md hover:shadow-red-900/50 flex items-center justify-center group"
+            className="flex-1 bg-gradient-to-r from-gold-700 to-gold-600 text-gold-200 text-center py-2.5 px-4 rounded-lg font-medium hover:from-gold-800 hover:to-gold-700 transition-all duration-300 shadow-md hover:shadow-gold-900/50 flex items-center justify-center group"
           >
             <span>{translate('car.viewDetails')}</span>
             <FaArrowRight className="ml-2 opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all duration-300" />
@@ -138,7 +138,7 @@ const CarCard = ({ car, showRentalPrice = false }) => {
           {isRental && showRentalPrice && (
             <Link
               to="/rental"
-              className="flex-1 bg-black border border-red-700 text-gold-300 text-center py-2.5 px-4 rounded-lg font-medium hover:bg-red-950/30 transition-all duration-300"
+              className="flex-1 bg-black border border-gold-700 text-gold-300 text-center py-2.5 px-4 rounded-lg font-medium hover:bg-gold-950/30 transition-all duration-300"
             >
               {translate('car.viewRentals')}
             </Link>

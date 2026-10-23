@@ -64,7 +64,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-black via-red-900 to-black py-16">
+      <section className="bg-gradient-to-r from-black via-gold-900 to-black py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-gold-500">{translate('contact.title')}</h1>
           <p className="text-xl lg:text-2xl max-w-3xl mx-auto text-gold-300">
@@ -77,7 +77,7 @@ const Contact = () => {
         {/* Why Contact Us and Map - First Row */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* Why Contact Us */}
-          <div className="bg-black border border-red-800 p-8 rounded-lg shadow-md">
+          <div className="bg-black border border-gold-800 p-8 rounded-lg shadow-md">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-gold-500 mb-4">{translate('contact.why.title')}</h3>
               <p className="text-lg text-gold-300">
@@ -87,7 +87,7 @@ const Contact = () => {
             
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="bg-red-900 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="bg-gold-900 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-xl">🚗</span>
                 </div>
                 <div>
@@ -97,7 +97,7 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="bg-red-900 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="bg-gold-900 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-xl">💰</span>
                 </div>
                 <div>
@@ -107,7 +107,7 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="bg-red-900 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="bg-gold-900 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-xl">🔧</span>
                 </div>
                 <div>
@@ -119,9 +119,9 @@ const Contact = () => {
           </div>
 
           {/* Map Section */}
-          <div className="bg-black border border-red-800 p-8 rounded-lg shadow-md">
+          <div className="bg-black border border-gold-800 p-8 rounded-lg shadow-md">
             <h3 className="text-xl font-bold text-gold-500 mb-4">{translate('contact.visit.title')}</h3>
-            <div className="aspect-w-16 aspect-h-9 mb-4 border border-red-700 rounded-lg p-1">
+            <div className="aspect-w-16 aspect-h-9 mb-4 border border-gold-700 rounded-lg p-1">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8944447555845!2d100.6097!3d13.6896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQxJzIyLjYiTiAxMDDCsDM2JzM1LjAiRQ!5e0!3m2!1sen!2sth!4v1696165200000!5m2!1sen!2sth"
                 width="100%"
@@ -146,7 +146,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Form - Full Width Second Row */}
-        <div className="bg-black border border-red-800 p-8 rounded-lg shadow-md">
+        <div className="bg-black border border-gold-800 p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-gold-500 mb-6 text-center">{translate('contact.form.title')}</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -161,7 +161,7 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 placeholder-gold-600"
+                    className="w-full px-3 py-2 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 placeholder-gold-600"
                   />
                 </div>
                 <div>
@@ -175,7 +175,7 @@ const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 placeholder-gold-600"
+                    className="w-full px-3 py-2 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 placeholder-gold-600"
                   />
                 </div>
               </div>
@@ -191,7 +191,7 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 placeholder-gold-600"
+                    className="w-full px-3 py-2 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 placeholder-gold-600"
                   />
                 </div>
                 <div>
@@ -204,7 +204,7 @@ const Contact = () => {
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500"
+                    className="w-full px-3 py-2 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500"
                   >
                     <option value="">{translate('contact.form.subject.select')}</option>
                     <option value="general">{translate('contact.form.subject.general')}</option>
@@ -227,14 +227,14 @@ const Contact = () => {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 placeholder-gold-600"
+                  className="w-full px-3 py-2 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 placeholder-gold-600"
                   placeholder={translate('contact.form.message.placeholder')}
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-red-600 text-gold-200 py-3 px-6 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
+                className="w-full bg-gold-600 text-gold-200 py-3 px-6 rounded-lg font-semibold hover:bg-gold-700 transition-colors duration-200"
               >
                 {translate('contact.form.submit')}
               </button>
@@ -246,10 +246,10 @@ const Contact = () => {
           {contactInfo.map((info, index) => {
             const Icon = info.icon;
             const content = (
-              <div className="bg-black border border-red-800 p-6 rounded-lg shadow-md text-center hover:border-gold-500 transition-all duration-300 h-48 flex flex-col justify-between">
+              <div className="bg-black border border-gold-800 p-6 rounded-lg shadow-md text-center hover:border-gold-500 transition-all duration-300 h-48 flex flex-col justify-between">
                 <div>
                   <div className="flex justify-center mb-4">
-                    <Icon className="text-3xl text-red-600" />
+                    <Icon className="text-3xl text-gold-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-gold-400 mb-2">
                     {info.title}

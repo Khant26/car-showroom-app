@@ -149,13 +149,13 @@ const Cars = () => {
   return (
     <div className="min-h-screen bg-black text-gold-300">
       {/* Header */}
-      <div className="bg-gradient-to-r from-black via-red-900 to-black shadow-md relative overflow-hidden">
+      <div className="bg-gradient-to-r from-black via-gold-900 to-black shadow-md relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')] opacity-10 bg-cover bg-center"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
           <h1 className="text-4xl lg:text-5xl font-bold text-gold-500 mb-4 drop-shadow-lg">
             {pageTitle}
           </h1>
-          <div className="h-1 w-32 bg-red-700 mb-6 opacity-80"></div>
+          <div className="h-1 w-32 bg-gold-700 mb-6 opacity-80"></div>
           <p className="text-xl text-gold-300 max-w-2xl">
             {pageTitle === translate('cars.title') 
               ? translate('cars.subtitle')
@@ -167,7 +167,7 @@ const Cars = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Search and Filter Bar */}
-        <div className="bg-gradient-to-b from-black to-red-950/10 border border-red-800 rounded-lg shadow-lg p-6 mb-10">
+        <div className="bg-gradient-to-b from-black to-gold-950/10 border border-gold-800 rounded-lg shadow-lg p-6 mb-10">
           <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
             {/* Search */}
             <div className="flex-1 relative">
@@ -178,7 +178,7 @@ const Cars = () => {
                 value={localFilters.search}
                 onChange={(e) => handleFilterChange('search', e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && applyFilters()}
-                className="w-full pl-12 pr-4 py-3 bg-black border border-red-800 rounded-lg text-gold-300 placeholder-gold-600 focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-red-950/50"
+                className="w-full pl-12 pr-4 py-3 bg-black border border-gold-800 rounded-lg text-gold-300 placeholder-gold-600 focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-gold-950/50"
               />
             </div>
 
@@ -190,7 +190,7 @@ const Cars = () => {
                   handleFilterChange('sort', e.target.value);
                   setTimeout(applyFilters, 100);
                 }}
-                className="px-4 py-3 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-red-950/50"
+                className="px-4 py-3 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-gold-950/50"
               >
                 {sortOptions.map(option => (
                   <option key={option.value} value={option.value}>
@@ -201,7 +201,7 @@ const Cars = () => {
 
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="flex items-center space-x-2 px-5 py-3 bg-gradient-to-r from-red-800 to-red-700 text-gold-300 rounded-lg hover:from-red-900 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-900/50"
+                className="flex items-center space-x-2 px-5 py-3 bg-gradient-to-r from-gold-800 to-gold-700 text-gold-300 rounded-lg hover:from-gold-900 hover:to-gold-800 transition-all duration-300 shadow-md hover:shadow-gold-900/50"
               >
                 <FaFilter className={showFilters ? "rotate-180 transform" : ""} />
                 <span>{translate('cars.filters')}</span>
@@ -209,7 +209,7 @@ const Cars = () => {
 
               <button
                 onClick={applyFilters}
-                className="px-6 py-3 bg-gradient-to-r from-red-700 to-red-600 text-gold-200 rounded-lg hover:from-red-800 hover:to-red-700 transition-all duration-300 shadow-md hover:shadow-red-900/50"
+                className="px-6 py-3 bg-gradient-to-r from-gold-700 to-gold-600 text-gold-200 rounded-lg hover:from-gold-800 hover:to-gold-700 transition-all duration-300 shadow-md hover:shadow-gold-900/50"
               >
                 {translate('cars.search.button')}
               </button>
@@ -218,7 +218,7 @@ const Cars = () => {
 
           {/* Advanced Filters */}
           {showFilters && (
-            <div className="mt-8 pt-8 border-t border-red-800 animate-fadeIn">
+            <div className="mt-8 pt-8 border-t border-gold-800 animate-fadeIn">
               <h3 className="text-xl font-semibold text-gold-400 mb-6 text-center">{translate('cars.filters.advanced')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {/* Brand Filter */}
@@ -229,7 +229,7 @@ const Cars = () => {
                   <select
                     value={localFilters.brand}
                     onChange={(e) => handleFilterChange('brand', e.target.value)}
-                    className="w-full px-4 py-3 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-red-950/30"
+                    className="w-full px-4 py-3 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-gold-950/30"
                   >
                     <option value="">{translate('cars.filters.allBrands')}</option>
                     {brands.map(brand => (
@@ -248,7 +248,7 @@ const Cars = () => {
                   <select
                     value={localFilters.category}
                     onChange={(e) => handleFilterChange('category', e.target.value)}
-                    className="w-full px-4 py-3 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-red-950/30"
+                    className="w-full px-4 py-3 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-gold-950/30"
                   >
                     <option value="">All Categories</option>
                     {categories.map(category => (
@@ -267,7 +267,7 @@ const Cars = () => {
                   <select
                     value={localFilters.fuelType}
                     onChange={(e) => handleFilterChange('fuelType', e.target.value)}
-                    className="w-full px-4 py-3 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-red-950/30"
+                    className="w-full px-4 py-3 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-gold-950/30"
                   >
                     <option value="">All Fuel Types</option>
                     {fuelTypes.map(type => (
@@ -286,7 +286,7 @@ const Cars = () => {
                   <select
                     value={localFilters.transmission}
                     onChange={(e) => handleFilterChange('transmission', e.target.value)}
-                    className="w-full px-4 py-3 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-red-950/30"
+                    className="w-full px-4 py-3 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-gold-950/30"
                   >
                     <option value="">All Transmissions</option>
                     {transmissions.map(type => (
@@ -307,7 +307,7 @@ const Cars = () => {
                     placeholder="0"
                     value={localFilters.minPrice}
                     onChange={(e) => handleFilterChange('minPrice', e.target.value)}
-                    className="w-full px-4 py-3 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-red-950/30"
+                    className="w-full px-4 py-3 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-gold-950/30"
                   />
                 </div>
 
@@ -320,7 +320,7 @@ const Cars = () => {
                     placeholder="100000"
                     value={localFilters.maxPrice}
                     onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
-                    className="w-full px-4 py-3 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-red-950/30"
+                    className="w-full px-4 py-3 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-gold-950/30"
                   />
                 </div>
 
@@ -333,7 +333,7 @@ const Cars = () => {
                     placeholder="2020"
                     value={localFilters.year}
                     onChange={(e) => handleFilterChange('year', e.target.value)}
-                    className="w-full px-4 py-3 bg-black border border-red-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-red-950/30"
+                    className="w-full px-4 py-3 bg-black border border-gold-800 text-gold-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 shadow-inner shadow-gold-950/30"
                   />
                 </div>
               </div>
@@ -341,13 +341,13 @@ const Cars = () => {
               <div className="flex justify-center space-x-6 mt-8">
                 <button
                   onClick={clearFilters}
-                  className="px-8 py-3 border border-red-800 text-gold-400 rounded-lg hover:bg-red-900 hover:bg-opacity-30 transition-all duration-300 shadow-md hover:shadow-red-900/30"
+                  className="px-8 py-3 border border-gold-800 text-gold-400 rounded-lg hover:bg-gold-900 hover:bg-opacity-30 transition-all duration-300 shadow-md hover:shadow-gold-900/30"
                 >
                   Clear All
                 </button>
                 <button
                   onClick={applyFilters}
-                  className="px-8 py-3 bg-gradient-to-r from-red-700 to-red-600 text-gold-200 rounded-lg hover:from-red-800 hover:to-red-700 transition-all duration-300 shadow-md hover:shadow-red-900/50"
+                  className="px-8 py-3 bg-gradient-to-r from-gold-700 to-gold-600 text-gold-200 rounded-lg hover:from-gold-800 hover:to-gold-700 transition-all duration-300 shadow-md hover:shadow-gold-900/50"
                 >
                   Apply Filters
                 </button>
@@ -364,16 +364,16 @@ const Cars = () => {
         ) : (
           <>
             {/* Results Header */}
-            <div className="flex justify-between items-center bg-black bg-opacity-50 p-4 rounded-lg border border-red-900/50 mb-8">
+            <div className="flex justify-between items-center bg-black bg-opacity-50 p-4 rounded-lg border border-gold-900/50 mb-8">
               <div className="text-gold-300 font-medium">
                 Showing {cars.length} of {pagination.cars.total} cars
               </div>
               {(filters.search || filters.brand || filters.category) && (
                 <button
                   onClick={clearFilters}
-                  className="flex items-center space-x-2 text-gold-300 hover:text-red-500 transition-colors duration-300"
+                  className="flex items-center space-x-2 text-gold-300 hover:text-gold-500 transition-colors duration-300"
                 >
-                  <FaTimes className="text-red-500" />
+                  <FaTimes className="text-gold-500" />
                   <span>Clear Filters</span>
                 </button>
               )}
@@ -383,14 +383,14 @@ const Cars = () => {
             {cars.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-10">
                 {cars.map((car) => (
-                  <div key={car._id} className="transform hover:-translate-y-2 transition-all duration-300 hover:shadow-xl hover:shadow-red-900/20">
+                  <div key={car._id} className="transform hover:-translate-y-2 transition-all duration-300 hover:shadow-xl hover:shadow-gold-900/20">
                     <CarCard car={car} />
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center py-16 bg-gradient-to-b from-black to-red-950/10 rounded-lg border border-red-900/50 p-10 shadow-lg">
-                <FaSearch className="mx-auto text-5xl text-red-600/50 mb-6" />
+              <div className="text-center py-16 bg-gradient-to-b from-black to-gold-950/10 rounded-lg border border-gold-900/50 p-10 shadow-lg">
+                <FaSearch className="mx-auto text-5xl text-gold-600/50 mb-6" />
                 <div className="text-gold-400 text-xl mb-4 font-medium">
                   No cars found matching your criteria
                 </div>
@@ -399,7 +399,7 @@ const Cars = () => {
                 </p>
                 <button
                   onClick={clearFilters}
-                  className="px-8 py-3 bg-gradient-to-r from-red-700 to-red-600 text-gold-200 rounded-lg hover:from-red-800 hover:to-red-700 transition-all duration-300 shadow-md hover:shadow-red-900/50"
+                  className="px-8 py-3 bg-gradient-to-r from-gold-700 to-gold-600 text-gold-200 rounded-lg hover:from-gold-800 hover:to-gold-700 transition-all duration-300 shadow-md hover:shadow-gold-900/50"
                 >
                   Clear filters to see all cars
                 </button>
@@ -409,11 +409,11 @@ const Cars = () => {
             {/* Pagination */}
             {pagination.cars.totalPages > 1 && (
               <div className="flex justify-center mt-12 pb-6">
-                <div className="flex items-center space-x-3 bg-black bg-opacity-70 px-6 py-4 rounded-full shadow-lg border border-red-900/30">
+                <div className="flex items-center space-x-3 bg-black bg-opacity-70 px-6 py-4 rounded-full shadow-lg border border-gold-900/30">
                   <button
                     onClick={() => handlePageChange(pagination.cars.page - 1)}
                     disabled={pagination.cars.page === 1}
-                    className="px-5 py-2 border border-red-800 text-gold-300 rounded-full disabled:opacity-40 disabled:cursor-not-allowed hover:bg-red-900/30 transition-all duration-300 flex items-center"
+                    className="px-5 py-2 border border-gold-800 text-gold-300 rounded-full disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gold-900/30 transition-all duration-300 flex items-center"
                   >
                     <FaChevronLeft className="mr-2" /> Previous
                   </button>
@@ -424,8 +424,8 @@ const Cars = () => {
                       onClick={() => handlePageChange(pageNum)}
                       className={`w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 ${
                         pageNum === pagination.cars.page
-                          ? 'bg-gradient-to-r from-red-700 to-red-600 text-gold-200 border-red-600 shadow-md'
-                          : 'border-red-800 text-gold-300 hover:bg-red-900/40 hover:border-red-700'
+                          ? 'bg-gradient-to-r from-gold-700 to-gold-600 text-gold-200 border-gold-600 shadow-md'
+                          : 'border-gold-800 text-gold-300 hover:bg-gold-900/40 hover:border-gold-700'
                       }`}
                     >
                       {pageNum}
@@ -435,7 +435,7 @@ const Cars = () => {
                   <button
                     onClick={() => handlePageChange(pagination.cars.page + 1)}
                     disabled={pagination.cars.page === pagination.cars.totalPages}
-                    className="px-5 py-2 border border-red-800 text-gold-300 rounded-full disabled:opacity-40 disabled:cursor-not-allowed hover:bg-red-900/30 transition-all duration-300 flex items-center"
+                    className="px-5 py-2 border border-gold-800 text-gold-300 rounded-full disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gold-900/30 transition-all duration-300 flex items-center"
                   >
                     Next <FaChevronRight className="ml-2" />
                   </button>

@@ -68,7 +68,7 @@ const Home = () => {
                     onClick={() => setCurrentBannerIndex(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentBannerIndex
-                        ? 'bg-red-600 scale-125'
+                        ? 'bg-gold-600 scale-125'
                         : 'bg-gold-300 bg-opacity-60 hover:bg-gold-200'
                     }`}
                   />
@@ -77,7 +77,7 @@ const Home = () => {
             )}
           </div>
         ) : (
-          <div className="h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-r from-black via-red-900 to-black text-white">
+          <div className="h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-r from-black via-gold-900 to-black text-white">
             <div className="text-center">
               <h1 className="text-4xl lg:text-6xl font-bold mb-4 text-gold-400">
                 {translate('home.welcome')}
@@ -85,7 +85,7 @@ const Home = () => {
               <p className="text-xl mb-8 text-gold-300">{translate('home.subtitle')}</p>
               <Link
                 to="/cars"
-                className="bg-red-600 text-gold-200 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-red-700 transition-colors duration-200"
+                className="bg-gold-600 text-gold-200 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gold-700 transition-colors duration-200"
               >
                 {translate('home.explore')}
               </Link>
@@ -95,7 +95,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gradient-to-r from-black via-red-900 to-black relative">
+      <section className="py-20 bg-gradient-to-r from-black via-gold-900 to-black relative">
         <div className="absolute inset-0 opacity-20 bg-pattern"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
@@ -109,7 +109,7 @@ const Home = () => {
             {features.map((feature, index) => (
               <div 
                 key={index} 
-                className="bg-gradient-to-b from-black to-red-950 p-8 rounded-lg border border-red-800 hover:border-gold-500 transition-all duration-300 shadow-lg hover:shadow-red-900/50 transform hover:-translate-y-1"
+                className="bg-gradient-to-b from-black to-gold-950 p-8 rounded-lg border border-gold-800 hover:border-gold-500 transition-all duration-300 shadow-lg hover:shadow-gold-900/50 transform hover:-translate-y-1"
               >
                 <div className="text-4xl mb-4 flex justify-center">{feature.icon}</div>
                 <h3 className="text-xl font-semibold mb-3 text-gold-400 text-center">{feature.title}</h3>
@@ -123,15 +123,15 @@ const Home = () => {
       {/* Featured Cars Section */}
       <section className="py-20 bg-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')] opacity-10 bg-cover bg-center"></div>
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-red-900/20 to-transparent"></div>
-        <div className="absolute bottom-0 right-0 w-full h-32 bg-gradient-to-t from-red-900/20 to-transparent"></div>
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gold-900/20 to-transparent"></div>
+        <div className="absolute bottom-0 right-0 w-full h-32 bg-gradient-to-t from-gold-900/20 to-transparent"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-gold-500 mb-4 drop-shadow-lg">
               {translate('home.featuredCars.title')}
             </h2>
-            <div className="h-1 w-32 bg-red-700 mx-auto mb-6"></div>
+            <div className="h-1 w-32 bg-gold-700 mx-auto mb-6"></div>
             <p className="text-xl text-gold-300 max-w-2xl mx-auto">
               {translate('home.featuredCars.subtitle')}
             </p>
@@ -153,7 +153,7 @@ const Home = () => {
                 <div className="text-center mt-16">
                   <Link
                     to="/cars"
-                    className="inline-flex items-center space-x-3 bg-gradient-to-r from-red-700 to-red-600 text-gold-200 px-10 py-4 rounded-lg font-semibold text-lg hover:from-red-800 hover:to-red-700 transition-all duration-300 shadow-lg shadow-red-900/30 hover:shadow-red-900/50"
+                    className="inline-flex items-center space-x-3 bg-gradient-to-r from-gold-700 to-gold-600 text-gold-200 px-10 py-4 rounded-lg font-semibold text-lg hover:from-gold-800 hover:to-gold-700 transition-all duration-300 shadow-lg shadow-gold-900/30 hover:shadow-gold-900/50"
                   >
                     <span>{translate('home.featuredCars.viewAll')}</span>
                     <FaArrowRight className="animate-pulse" />
@@ -166,13 +166,13 @@ const Home = () => {
       </section>
 
       {/* Brands Section */}
-      <section className="py-16 bg-gradient-to-b from-black via-black to-red-950/30">
+      <section className="py-16 bg-gradient-to-b from-black via-black to-gold-950/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gold-500 mb-4">
               {translate('home.brands.title')}
             </h2>
-            <div className="h-1 w-24 bg-red-700 mx-auto mb-6"></div>
+            <div className="h-1 w-24 bg-gold-700 mx-auto mb-6"></div>
             <p className="text-xl text-gold-300 max-w-2xl mx-auto">
               {translate('home.brands.subtitle')}
             </p>
@@ -191,7 +191,7 @@ const Home = () => {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12 border border-red-800 rounded-lg bg-black bg-opacity-60">
+            <div className="text-center py-12 border border-gold-800 rounded-lg bg-black bg-opacity-60">
               <p className="text-gold-400 text-lg">{translate('home.noBrands')}</p>
             </div>
           )}
@@ -199,7 +199,7 @@ const Home = () => {
           <div className="text-center mt-12">
             <Link
               to="/cars"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-700 to-red-600 text-gold-200 px-8 py-3 rounded-lg font-semibold text-lg hover:from-red-800 hover:to-red-700 transition-all duration-300 shadow-lg shadow-red-900/30 hover:shadow-red-900/50"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-gold-700 to-gold-600 text-gold-200 px-8 py-3 rounded-lg font-semibold text-lg hover:from-gold-800 hover:to-gold-700 transition-all duration-300 shadow-lg shadow-gold-900/30 hover:shadow-gold-900/50"
             >
               <span>{translate('home.brands.viewAll')}</span>
               <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />

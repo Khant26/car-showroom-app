@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaCar, FaBars, FaTimes, FaHome, FaInfoCircle, FaPhone, FaKey } from 'react-icons/fa';
-import logo from '../assets/logo.png';
+import Wordmark from './Wordmark';
 import LanguageSelector from './LanguageSelector';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <img src={logo} alt="CarShowroom Logo" className="h-16 w-auto" />
+            <Wordmark />
           </Link>
 
           {/* Desktop Navigation */}

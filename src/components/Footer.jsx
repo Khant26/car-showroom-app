@@ -10,7 +10,7 @@ import {
   FaInstagram, 
   FaLinkedin 
 } from 'react-icons/fa';
-import logo from '../assets/logo.png';
+import Wordmark from './Wordmark';
 import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
@@ -39,7 +39,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <img src={logo} alt="CarShowroom Logo" className="h-14 w-auto drop-shadow-lg" />
+              <Wordmark />
             </div>
             <p className="text-gray-300 text-sm leading-relaxed max-w-sm">
               {translate('footer.description')}
